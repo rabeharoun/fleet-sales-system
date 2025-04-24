@@ -21,7 +21,10 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Define routes (we'll add these later)
+// Define routes
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Fleet Sales Management System API is running' });
 });
